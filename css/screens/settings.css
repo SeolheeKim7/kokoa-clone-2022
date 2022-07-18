@@ -1,3 +1,16 @@
+@keyframes chagecolor {
+    from{
+        background-color:var(--yellow);
+        opacity:0;
+    }
+    to{
+        background-color:var(--yellow);
+        opacity: 0.5;
+        color: blue;
+        font-size: 24px;
+    }
+}
+
 .settings__setting {
     padding: 20px 0;
     border-bottom: 1px solid rgba(0,0,0,0.08);
@@ -5,6 +18,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: chagecolor 0.3s ease-in-out;
+}
+.settings__setting:hover {
+    animation: chagecolor 0.3s ease-in-out forwards;
 }
 .settings__setting i {
     margin-right: 12px;
@@ -14,3 +31,4 @@
 .settings__setting-column:last-child {
     opacity: 0.5;   
 }
+

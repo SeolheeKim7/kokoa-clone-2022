@@ -1,7 +1,7 @@
 
 #chat-screen {
     background-color:  #abc1d1;
-    height: 11000vh;
+    height: 500vh;
 }
 #chat-screen .alt-header {
     z-index: 1;
@@ -14,11 +14,25 @@
 #chat-screen .alt-header {
     top: 10px;
 }
+
+@keyframes fadeIn {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+
 .main-chat {
-    margin-top: 120px;
+    margin-top: 180px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 #chat-screen .status-bar {
     z-index: 2;
@@ -34,6 +48,7 @@
     width: 100%;
     display: flex;
     margin-bottom: 25px;
+    
 }
 .message-row img {
     width: 50px;
@@ -53,9 +68,36 @@
     border-top-left-radius: 0px;
     margin-right: 5px;
 }
+
+@keyframes flyFromRightSide {
+    0% {
+        transform: translateX(1000px);
+    }
+    50% {
+        transform: translateX(300px);
+    }
+    100% {
+        visibility: visible;
+    }
+}
+
+@keyframes flyFromLeftSide {
+    0% {
+        transform: translateX(-1000px);
+    }
+    50% {
+        transform: translateX(-300px);
+    }
+    100% {
+        visibility: visible;
+    }
+}
+
 .message__info {
     display: flex;
     align-items: flex-end;
+    visibility: hidden;
+    animation: flyFromRightSide 0.8s linear forwards;
 }
 .message__Time,
 .message__author {
@@ -64,6 +106,10 @@
 }
 .message-row--own {
     justify-content: flex-end;
+}
+.message-row--own .message__info {
+    animation: flyFromLeftSide 0.8s linear forwards;
+    animation-delay: 0.8s;
 }
 .message-row--own .message__bubble {
     background-color: var(--yellow);
@@ -92,6 +138,7 @@
     padding: 5px 25px;
     align-items: center;
     box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
 }
 .reply .reply__column:first-child {
     width: 10%;
@@ -109,6 +156,7 @@
     border: var(--main-border);
     border-radius: 25px;
     box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
 }
 .reply__column:last-child > i,
 .reply__column:last-child button {
@@ -133,4 +181,40 @@
 .reply__column button:focus,
 .reply__column button:active {
     outline: none;
+}
+
+@keyframes avartarAnimation {
+    10% {
+        transform: none;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: none;
+    }
+}
+.message-row img:hover {
+    animation: avartarAnimation 1s linear;
+} 
+
+.reply .reply__column:first-child, 
+.reply .fa-face-laugh,
+.reply button {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.reply:focus-within .reply__column:first-child, 
+.reply:focus-within .fa-face-laugh,
+.reply:focus-within button {
+    opacity: 0;
+}
+
+.reply input:focus {
+    width: 95vw;
+    transform: translateX(-13%) translateY(-80px);
+}
+
+.reply:focus-within {
+    transform: translateY(80px);
 }
