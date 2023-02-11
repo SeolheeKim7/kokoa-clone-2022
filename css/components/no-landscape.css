@@ -16,7 +16,8 @@
         top: 0;
         font-size: 32px;
     }
-    #no-mobile {
-        display: none;
-    }
+    
+}
+#no-mobile {
+    display: none;
 }
